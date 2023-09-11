@@ -1,3 +1,54 @@
+const panel = document.querySelector(".panel");
+const nexts = document.querySelector(".nexts");
+const prevs =  document.querySelector(".prevs");
+
+//마지막 li를 때어서 맨 앞으로 붙여서 1부터 슬라이드가 시작되도록
+//방법2개
+panel.prepend(panel.lastElementChild);
+// panel.prepend(panel.children[panel.children.length -1]);
+
+nexts.addEventListener("click",(e)=>{
+    e.preventDefault();
+
+    panel.style.transition ="margin-left 0.5s";
+    panel.style.marginLeft = "-50%";
+
+    //슬라이더 순환이 되기 위한 코드
+    panel.addEventListener("transitionend",()=>{
+        panel.appendChild(panel.children[0]);
+        panel.style.transition = "none";
+        panel.style.marginLeft = "-25%"
+    }, {once : true});
+    //once : true는 이 이벤트 리스너가 오직 한번만 실행 된 후 그 후 자동적으로
+    //제거 되도록 한다
+})
+
+prevs.addEventListener("click",(e)=>{
+    e.preventDefault();
+
+    panel.style.transition ="margin-left 0.5s";
+    panel.style.marginLeft = "0%";
+
+    //슬라이더 순환이 되기 위한 코드
+    panel.addEventListener("transitionend",()=>{
+        panel.prepend(panel.children[panel.children.length -1]);
+        panel.style.transition = "none";
+        panel.style.marginLeft = "-25%";
+    }, {once : true});
+    //once : true는 이 이벤트 리스너가 오직 한번만 실행 된 후 그 후 자동적으로
+    //제거 되도록 한다
+})
+
+
+
+
+
+
+
+
+
+
+
 //서클슬라이더
 const slider_ul = document.querySelector("#slider ul");
 const sliders = slider_ul.children;

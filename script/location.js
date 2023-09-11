@@ -1,5 +1,5 @@
 //992c3fa35a12c362af0414f562a235f7
-var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+var container = document.getElementById('#map'); //지도를 담을 영역의 DOM 레퍼런스
 //교통정보를 보게하는 버튼
 const t_on = document.querySelectorAll(".traffic li")[0];
 //교통정보를 끄게하는 버튼
